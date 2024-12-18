@@ -115,12 +115,12 @@ class CategoryController extends Controller
         //
         $category = Category::find($id);
 
-        // $tCategories = Category::where('position', '>', $category->position)->get();
+        $tCategories = Category::where('position', '>', $category->position)->get();
 
-        // foreach ($tCategories as $tcat) {
-        //     $tcat->position = $tcat->position - 1;
-        //     $tcat->update();
-        // }
+        foreach ($tCategories as $tcat) {
+            $tcat->position = $tcat->position - 1;
+            $tcat->update();
+        }
 
 
         $category->delete();

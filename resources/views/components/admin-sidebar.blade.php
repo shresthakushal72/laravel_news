@@ -10,7 +10,7 @@
             <a href="{{ route('dashboard') }}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
         </li>
         <li class="dropdown">
-            <a href="index.html" class="nav-link"><i data-feather="book"></i><span>Posts</span></a>
+            <a href="{{ route('post.index') }}" class="nav-link"><i data-feather="book"></i><span>Posts</span></a>
         </li>
         <li class="dropdown">
             <a href="index.html" class="nav-link"><i data-feather="image"></i><span>Advertise</span></a>

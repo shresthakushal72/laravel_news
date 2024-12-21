@@ -28,13 +28,14 @@
                                     <tbody>
                                         @foreach ($posts as $index=>$post)
                                             <tr>
-                                                {{ ++$index }}
                                                 <td>
-                                                    {{ $post->title }}
+                                                    {{ ++$index}}
                                                 </td>
-                                                <td><img width="120" src="{{asset($post->image) }}" alt="{{$post->title}}">{{ }}</td>
+
+                                                <td>{{ $post->title }}</td>
+                                                <td><img width="120" src="{{asset($post->image) }}" alt="{{$post->title}}"></td>
                                                 <td>{{ $post->views }}</td>
-                                                <td>{{ $post->status }}</td>
+
                                                 <td>
                                                     @if ($post->status == 'pending')
                                                         <span class="badge bg-warning text-white">{{ $post->status }}</span>
@@ -45,7 +46,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <form action="{{ route('post.destroy', $category->id) }}"
+                                                    <form action="{{ route('post.destroy', $post->id) }}"
                                                         method="post">
                                                         @csrf
                                                         @method('delete')

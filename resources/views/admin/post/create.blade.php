@@ -3,24 +3,14 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                    <h4>Category Create</h4>
-                    <a href="{{ route('category.index') }}" class="btn btn-primary">go back</a>
+                    <h4>Post Create</h4>
+                    <a href="{{ route('post.index') }}" class="btn btn-primary">go back</a>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('category.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="mb-3 col-6">
-                                <label for="categories">Select Categories <span class="text-danger">*</span></label>
-                                <select name="categories[]" id="categories" class="form-control select2" multiple>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->eng_title }}</option>
-                                    @endforeach
-                                </select>
-                                @error('categories')
-                                    <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
+
 
                             <div class="mb-3 col-6">
                                 <label for="title">Title <span class="text-danger">*</span></label>

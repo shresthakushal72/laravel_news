@@ -18,6 +18,8 @@
   <!-- Custom style CSS -->
   <link rel="stylesheet" href="/assets/css/custom.css">
   <link rel='shortcut icon' type='image/x-icon' href='/assets/img/favicon.ico' />
+
+  <link rel="stylesheet" href="/assets/bundles/summernote/summernote-bs4.css">
 </head>
 
 <body>
@@ -181,6 +183,8 @@
   <script src="/assets/bundles/jquery-ui/jquery-ui.min.js"></script>
   <!-- Page Specific JS File -->
   <script src="/assets/js/page/datatables.js"></script>
+
+  <script src="/assets/bundles/summernote/summernote-bs4.js"></script>
 </body>
 
 

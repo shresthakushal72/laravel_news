@@ -10,11 +10,9 @@
             <a href="{{ route('dashboard') }}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
         </li>
         <li class="dropdown">
-            <a href="{{ route('post.index') }}" class="nav-link"><i data-feather="book"></i><span>Posts</span></a>
+            <a href="{{route('post.index')}}" class="nav-link"><i data-feather="paperclip"></i><span>Post</span></a>
         </li>
-        <li class="dropdown">
-            <a href="index.html" class="nav-link"><i data-feather="image"></i><span>Advertise</span></a>
-        </li>
+
 
         <li class="dropdown">
             <a href="#" class="menu-toggle nav-link has-dropdown"><i
@@ -23,6 +21,9 @@
                 <li><a class="nav-link" href="{{ route('company.index') }}">Company</a></li>
                 <li><a class="nav-link" href="{{ route('category.index') }}">Category</a></li>
             </ul>
+        </li>
+        <li class="dropdown">
+            <a href="index.html" class="nav-link"><i data-feather="image"></i><span>Advertise</span></a>
         </li>
 
     </ul>

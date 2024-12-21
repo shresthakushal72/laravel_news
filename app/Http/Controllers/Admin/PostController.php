@@ -24,6 +24,9 @@ class PostController extends Controller
     public function create()
     {
         //
+        $posts = Post::orderBy('id', 'desc')->get();
+        return view('admin.post.create', compact('posts'));
+
     }
 
     /**
@@ -32,12 +35,19 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            "title" => "required",
+            "description" => "required",
+            "image" => "required|image|mimes:jpeg,png,jpg,gif,svg|max:3024",
+        ]);
+
         $post = new Post();
         $post->title = $request->title;
         $post->description = $request->description;
         $post->meta_words = $request->meta_words;
         $post->meta_description = $request->meta_description;
-        $post->image = $request->image;
+
+
 
         if($request->hasFile('image')){
             $file = $request->file('image');
@@ -45,6 +55,11 @@ class PostController extends Controller
             $file->move('images', $fileName);
             $post->image = 'images/' . $fileName;
         }
+
+
+        $post->save();
+        toast('Record Added Successfully','success');
+        return redirect()->back();
 
     }
 
@@ -61,7 +76,8 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::find($id);
+        return view('admin.post.edit', compact('post'));
     }
 
     /**
@@ -70,6 +86,31 @@ class PostController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            "title" => "required",
+            "description" => "required",
+            "image" => "required|image|mimes:jpeg,png,jpg,gif,svg|max:3024",
+        ]);
+
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->meta_words = $request->meta_words;
+        $post->meta_description = $request->meta_description;
+
+
+
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $fileName = time(). '.' . $file->getClientOriginalName();
+            $file->move('images', $fileName);
+            $post->image = 'images/' . $fileName;
+        }
+
+
+        $post->update();
+        toast('Record Updated Successfully','success');
+        return redirect()->back();
     }
 
     /**
@@ -78,5 +119,9 @@ class PostController extends Controller
     public function destroy(string $id)
     {
         //
+        $post = Post::find($id);
+        $post->delete();
+        toast('Record Deleted Successfully','success');
+        return redirect()->back();
     }
 }

@@ -26,23 +26,27 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($posts as $index=>$post)
+                                        @foreach ($posts as $index => $post)
                                             <tr>
                                                 <td>
-                                                    {{ ++$index}}
+                                                    {{ ++$index }}
                                                 </td>
 
                                                 <td>{{ $post->title }}</td>
-                                                <td><img width="120" src="{{asset($post->image) }}" alt="{{$post->title}}"></td>
+                                                <td><img width="120" src="{{ asset($post->image) }}"
+                                                        alt="{{ $post->title }}"></td>
                                                 <td>{{ $post->views }}</td>
 
                                                 <td>
                                                     @if ($post->status == 'pending')
-                                                        <span class="badge bg-warning text-white">{{ $post->status }}</span>
+                                                        <span
+                                                            class="badge bg-warning text-white">{{ $post->status }}</span>
                                                     @elseif ($post->status == 'approved')
-                                                        <span class="badge bg-success text-white">{{ $post->status }}</span>
+                                                        <span
+                                                            class="badge bg-success text-white">{{ $post->status }}</span>
                                                     @else
-                                                        <span class="badge bg-danger text-white">{{ $post->status }}</span>
+                                                        <span
+                                                            class="badge bg-danger text-white">{{ $post->status }}</span>
                                                     @endif
                                                 </td>
                                                 <td>
@@ -50,9 +54,10 @@
                                                         method="post">
                                                         @csrf
                                                         @method('delete')
-                                                        <button class="btn btn-sm btn-danger">Delete</button>
+
                                                         <a href="{{ route('post.edit', $post->id) }}"
-                                                            class="btn btn-sm btn-primary">Detail</a>
+                                                            class="btn btn-sm btn-primary">Edit</a>
+                                                        <button class="btn btn-sm btn-danger">Delete</button>
                                                     </form>
                                                 </td>
                                             </tr>

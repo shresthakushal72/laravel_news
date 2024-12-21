@@ -36,9 +36,10 @@
                                                         method="post">
                                                         @csrf
                                                         @method('delete')
-                                                        <button class="btn btn-sm btn-danger">Delete</button>
+
                                                         <a href="{{ route('category.edit', $category->id) }}"
-                                                            class="btn btn-sm btn-primary">Detail</a>
+                                                            class="btn btn-sm btn-primary">Edit</a>
+                                                            <button class="btn btn-sm btn-danger">Delete</button>
                                                     </form>
                                                 </td>
                                             </tr>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -24,8 +25,9 @@ class PostController extends Controller
     public function create()
     {
         //
-        $posts = Post::orderBy('id', 'desc')->get();
-        return view('admin.post.create', compact('posts'));
+
+        $categories = Category::all();
+        return view('admin.post.create', compact('categories'));
 
     }
 
@@ -38,6 +40,7 @@ class PostController extends Controller
         $request->validate([
             "title" => "required",
             "description" => "required",
+            "categories" => "required",
             "image" => "required|image|mimes:jpeg,png,jpg,gif,svg|max:3024",
         ]);
 
@@ -46,6 +49,7 @@ class PostController extends Controller
         $post->description = $request->description;
         $post->meta_words = $request->meta_words;
         $post->meta_description = $request->meta_description;
+
 
 
 
@@ -58,7 +62,11 @@ class PostController extends Controller
 
 
         $post->save();
+
+        $post->categories()->attach($request->categories);
+
         toast('Record Added Successfully','success');
+
         return redirect()->back();
 
     }
@@ -77,7 +85,8 @@ class PostController extends Controller
     public function edit(string $id)
     {
         $post = Post::find($id);
-        return view('admin.post.edit', compact('post'));
+        $categories = Category::all();
+        return view('admin.post.edit', compact('post','categories'));
     }
 
     /**
@@ -89,7 +98,7 @@ class PostController extends Controller
         $request->validate([
             "title" => "required",
             "description" => "required",
-            "image" => "required|image|mimes:jpeg,png,jpg,gif,svg|max:3024",
+            "categories" => "required",
         ]);
 
         $post = Post::find($id);
@@ -97,7 +106,7 @@ class PostController extends Controller
         $post->description = $request->description;
         $post->meta_words = $request->meta_words;
         $post->meta_description = $request->meta_description;
-
+        $post->status = $request->status;
 
 
         if($request->hasFile('image')){
@@ -109,6 +118,8 @@ class PostController extends Controller
 
 
         $post->update();
+
+        $post->categories()->sync($request->categories);
         toast('Record Updated Successfully','success');
         return redirect()->back();
     }

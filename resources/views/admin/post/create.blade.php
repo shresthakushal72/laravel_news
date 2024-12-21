@@ -11,6 +11,17 @@
                         @csrf
                         <div class="row">
 
+                            <div class="mb-3 col-6">
+                                <label for="categories">Select Categories <span class="text-danger">*</span></label>
+                                <select name="categories[]" id="categories" class="form-control select2" multiple>
+                                    @foreach ($categories as $categorie)
+                                        <option value="{{ $categorie->id }}">{{ $categorie->eng_title }}</option>
+                                    @endforeach
+                                </select>
+                                @error('categories')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
 
                             <div class="mb-3 col-6">
                                 <label for="title">Title <span class="text-danger">*</span></label>

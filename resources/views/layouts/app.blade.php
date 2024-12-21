@@ -20,6 +20,10 @@
   <link rel='shortcut icon' type='image/x-icon' href='/assets/img/favicon.ico' />
 
   <link rel="stylesheet" href="/assets/bundles/summernote/summernote-bs4.css">
+
+
+  <link rel="stylesheet" href="/assets/bundles/select2/dist/css/select2.min.css">
+  <link rel="stylesheet" href="/assets/bundles/jquery-selectric/selectric.css">
 </head>
 
 <body>
@@ -185,6 +189,9 @@
   <script src="/assets/js/page/datatables.js"></script>
 
   <script src="/assets/bundles/summernote/summernote-bs4.js"></script>
+
+  <script src="/assets/bundles/select2/dist/js/select2.full.min.js"></script>
+  <script src="/assets/bundles/jquery-selectric/jquery.selectric.min.js"></script>
 </body>
 
 

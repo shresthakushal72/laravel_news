@@ -24,6 +24,8 @@
 
   <link rel="stylesheet" href="/assets/bundles/select2/dist/css/select2.min.css">
   <link rel="stylesheet" href="/assets/bundles/jquery-selectric/selectric.css">
+
+  <link rel="stylesheet" href="/nepalidate/nepalidate.min.css">
 </head>
 
 <body>
@@ -192,6 +194,14 @@
 
   <script src="/assets/bundles/select2/dist/js/select2.full.min.js"></script>
   <script src="/assets/bundles/jquery-selectric/jquery.selectric.min.js"></script>
+  {{-- Nepali Date  --}}
+  <script src="/nepalidate/nepalidate.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+      window.onload = function() {
+          var mainInput = document.getElementById("expire_date");
+          mainInput.nepaliDatePicker();
+      };
+  </script>
 </body>
 
 

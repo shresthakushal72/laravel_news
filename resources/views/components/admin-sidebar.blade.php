@@ -23,7 +23,7 @@
             </ul>
         </li>
         <li class="dropdown">
-            <a href="index.html" class="nav-link"><i data-feather="image"></i><span>Advertise</span></a>
+            <a href="{{route('advertise.index')}}" class="nav-link"><i data-feather="image"></i><span>Advertise</span></a>
         </li>
 
     </ul>

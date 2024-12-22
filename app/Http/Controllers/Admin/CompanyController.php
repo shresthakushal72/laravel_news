@@ -73,8 +73,6 @@ class CompanyController extends Controller
         toast('Record Added Successfully','success');
         return redirect()->route('company.index');
 
-
-
     }
 
     /**

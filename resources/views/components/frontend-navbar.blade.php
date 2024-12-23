@@ -14,14 +14,14 @@
 
         @php
 
-            $first_categories = $categories->take(3); // Only take 3 elements form the lists
-            $last_categories = $categories->skip(3); // skips the 3 elements form 0 index and store every elements after 3 skips
+            $first_categories = $categories->take(10); // Only take num elements form the lists
+            $last_categories = $categories->skip(10); // skips the num elements form 0 index and store every elements after num skips
 
         @endphp
 
         @foreach ($first_categories as $category)
         <li>
-            <a href=""
+            <a href="{{route('cate',$category->slug)}}"
                 class="hover:text-pink-600 hover:no-underline">{{ $category->nep_title }}</a>
         </li>
         @endforeach

@@ -77,7 +77,7 @@
 
     <ul class="space-y-4">
         <li>
-            <a href="" class="text-pink-600 font-semibold">Home</a>
+            <a href="{{route('home')}}" class="text-pink-600 font-semibold">Home</a>
         </li>
         @foreach ($categories as $category)
         <li>

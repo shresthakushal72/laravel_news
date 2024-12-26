@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,7 +23,9 @@ Route::get('/news/{id}',[PageController::class, 'news'])->name('news');
 // });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+$total_posts = Post::count();
+
+    return view('dashboard', compact('total_posts'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 

@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Company;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\View;
 
 class PageController extends Controller
@@ -43,4 +44,23 @@ class PageController extends Controller
         $advertises = Advertise::where('expire_date', '>=', date('Y-m-d'))->get();
         return view('frontend.category', compact('category', 'posts' , 'advertises'));
     }
+
+    public function news($id){
+
+        $news = Post::find($id);
+
+
+        // Get the cookie if there is already for posts so not to increase the view
+        $cookie = Cookie::get('post');
+
+        // If there is no cookie then we know the uer is new and we can increaset the view count
+        if(!$cookie || $cookie != $id){
+            $news->increment('views');
+            Cookie::queue(Cookie::make("post$id", $id, 30));
+        }
+
+        $advertises = Advertise::where('expire_date', '>=', date('Y-m-d'))->get();
+        return view('frontend.news', compact( 'news' , 'advertises'));
+    }
 }
+

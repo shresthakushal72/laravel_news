@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[PageController::class, 'home'])->name('home');
 Route::get('/category/{slug}',[PageController::class, 'category'])->name('cate');
+Route::get('/news/{id}',[PageController::class, 'news'])->name('news');
 
 
 

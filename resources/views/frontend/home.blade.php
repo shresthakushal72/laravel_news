@@ -4,9 +4,13 @@
     <div class="container grid md:grid-cols-12 gap-5">
         <div class="md:col-span-8 w-[100%]">
 
-            <img src="{{asset($latest_post->image)}}" class="w-full" alt="{{$latest_post->title}}">
+            <a href="{{route('news', $latest_post->id)}}">
+                <img src="{{asset($latest_post->image)}}" class="w-full" alt="{{$latest_post->title}}">
+            </a>
 
+           <a href="{{route('news', $latest_post->id)}}">
             <h1 class="text-4xl font-semibold py-8  md:text-2xl lg:text-3xl  mt-2"> {{$latest_post->title}}</h1>
+           </a>
 
             <div class="h-10 overflow-hidden w-[100%] object-cover descritpion">
                 {!! html_entity_decode($latest_post->description) !!}

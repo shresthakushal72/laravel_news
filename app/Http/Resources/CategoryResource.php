@@ -22,7 +22,7 @@ class CategoryResource extends JsonResource
             "nepali_title" => $this->nep_title,
             "english_title" => $this->eng_title,
             "slug" => $this->slug,
-
+            "posts" => PostResource::collection($this->posts),   // Getting posts through db relationsh // can alo call other Api resource here toshare data
         ];
     }
 }
